@@ -5,7 +5,7 @@ Programmer:   Mike C. Trethowan
 Date:         April 14, 2025
 Copyright     2025
 
-Discription:
+Description:
     XIAO RP2040
     This is a simple program to control the onboard RGB LEDs.    
 
