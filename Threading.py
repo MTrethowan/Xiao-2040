@@ -6,15 +6,11 @@ Programmer:   Mike C. Trethowan
 Date:         April 14, 2025
 Copyright     2025
 
-Discription:
+Description:
     XIAO RP2040
     This is a simple program to demenstarate threading.
-    This snippet can run on thr PICO by deleting ports for LEDR and LEDG
+    This snippet can run on the PICO by deleting ports for LEDR and LEDG
 
- Description:
-
-
-    
 ******************************************************************************
 Raspberry Pi Pico Pin Assignment
 
