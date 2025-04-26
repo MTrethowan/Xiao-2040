@@ -26,7 +26,7 @@ Raspberry Pi Pico Pin Assignment
                       
 ******************************************************************************
 '''
-from machine import Pin, RTC
+from machine import Pin
 from utime import sleep
 import _thread
 
