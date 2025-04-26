@@ -45,7 +45,7 @@ def Core1():
 
 def main():
     _thread.start_new_thread(Core1, ()) # Start core 1 
-    while True: # Loop on core 0 and wait for IRQ
+    while True: # Loop on core 0
         print("This Is Core 0")
         sleep(4)
 
