@@ -12,7 +12,7 @@ Description:
     This snippet can run on the PICO by deleting ports for LEDR and LEDG
 
 ******************************************************************************
-Xiao RP2040 Pin Assignment:
+Pin Assignment:
 
                       -------- XIAO RP2040 --------
             GP26   1-|                             |-14   5V
