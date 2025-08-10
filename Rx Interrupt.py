@@ -9,7 +9,7 @@ Copyright     2025
 Description:
     XIAO RP2040
     This is a simple program demonstrating interrupts with a twist. Instead of
-    an interrupt for button presses, I needed an interrupt for URT data received.
+    an interrupt for button presses, I needed an interrupt for UART data received.
     On previous Micropython UF2 versions, I wasn't able to implement a data
     received interrupt for the UART. With a recent update, I found that a UART
     interrupt is possible. The company I work for manufactures Tower Clocks,
@@ -104,4 +104,5 @@ while True:
     GetSats()
     LEDG.toggle()
     sleep(6)
+
  #***********************************************************************   
