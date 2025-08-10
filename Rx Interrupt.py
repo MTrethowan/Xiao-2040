@@ -54,7 +54,7 @@ d = 0.3 # Duration between commands
  
 # UART Interupt Request Handling ***************************************
 def RxCallback(x): # X is unused but needed or TypeError: function takes 0 positional arguments but 1 were given
-    if TxR.any():
+    if TxR.any(): # As this is a callback, this is not actually needed, but is here for demonstration.
         dat = str(TxR.readline())
         dat = dat.split(",")
         if dat[1] == "03":
@@ -106,3 +106,4 @@ while True:
     sleep(6)
 
  #***********************************************************************   
+
