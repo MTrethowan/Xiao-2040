@@ -44,7 +44,7 @@ Xiao RP2040 Pin Assignment:
 ******************************************************************************
 '''
 from machine import Pin, UART
-from utime import sleep
+from utime import sleep, sleep_us
 
 #***********************************************************************
 
@@ -52,13 +52,11 @@ LEDR = Pin(17, Pin.OUT, Pin.PULL_UP, value=1)
 LEDG = Pin(16, Pin.OUT, Pin.PULL_UP, value=1)
 LEDB = Pin(25, Pin.OUT, Pin.PULL_UP, value=1)
 TxR = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1))
-d = 0.3 # Duration between commands
  
 # UART Interupt Request Handling ***************************************
 def RxCallback(x): # X is unused but needed or TypeError: function takes 0 positional arguments but 1 were given
     if TxR.any(): # As this is a callback, this is not actually needed, but is here for demonstration.
-        dat = str(TxR.readline())
-        dat = dat.split(",")
+        dat = str(TxR.readline()).split(",")
         if dat[1] == "03":
             print("Sats: " + dat[2])
         elif dat[1] == "04":
@@ -76,17 +74,17 @@ TxR.irq(handler = RxCallback, trigger = TxR.IRQ_RXIDLE)
 def CFG(): # Turn off automatic NMEA sentenses.
     print("Configuring 5M, Please Wait")
     TxR.write("$PUBX,40,GGA,0,0,0,0,0,0*5A\n")
-    sleep(d)
+    sleep_us(300)
     TxR.write("$PUBX,40,GLL,0,0,0,0,0,0*5C\n")
-    sleep(d)
+    sleep_us(300)
     TxR.write("$PUBX,40,GSA,0,0,0,0,0,0*4E\n")
-    sleep(d)
+    sleep_us(300)
     TxR.write("$PUBX,40,GSV,0,0,0,0,0,0*59\n")
-    sleep(d)
+    sleep_us(300)
     TxR.write("$PUBX,40,RMC,0,0,0,0,0,0*47\n")
-    sleep(d)
+    sleep_us(300)
     TxR.write("$PUBX,40,VTG,0,0,0,0,0,0*5E\n")
-    sleep(d)     
+    sleep_us(300)     
     print("CFG Done")
 
 def GetTimeDate(): # Poll Date Time
@@ -108,5 +106,6 @@ while True:
     sleep(6)
 
  #***********************************************************************   
+
 
 
