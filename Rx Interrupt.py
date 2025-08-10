@@ -24,7 +24,9 @@ Description:
     clocks even if there is an interruption in GPS data
     
 Note:
-    This snippet can run on the PICO by deleting ports for LEDR and LEDG
+    This snippet can run on the PICO by deleting ports for LEDR and LEDG.
+    Infinate loop warning: while not TxR.any(): can be employed, but one would need
+    an escape or time out to exit the loop.
 
 ******************************************************************************
 Xiao RP2040 Pin Assignment:
@@ -106,4 +108,5 @@ while True:
     sleep(6)
 
  #***********************************************************************   
+
 
