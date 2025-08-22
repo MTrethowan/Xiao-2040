@@ -1,6 +1,6 @@
 '''
 ==============================================================================================
-Project:      Micropython
+ Project:      Micropython
  Program:      Threading
  Programmer:   Mike C. Trethowan
  Date:         April 14, 2025
@@ -29,6 +29,19 @@ Note:
     Infinate loop warning: while not TxR.any(): can be employed, but one would need
     an escape or time out to exit the loop.
 
+    Not all serial data work with vatiations of split().
+    An alternative to use in the Callback:
+       def RxCallback(null):
+         x = bytearray()
+         while txr.any():
+            byte = txr.read(1)
+            if byte:
+               x += byte
+    Note:
+    When parsing NMEA data, some are strings, other are bytes that come in the form of:
+    bytearray(b'@@Gb\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff%\r\n')
+    Using the alternative RxCallback, print(x[0:4]) will display bytearray(b'@@Gb').
+              
 ==============================================================================================
 Xiao RP2040 Pin Assignment:
 
@@ -107,6 +120,7 @@ while True:
     sleep(6)
 
  #=============================================================================================
+
 
 
 
