@@ -1,17 +1,18 @@
 '''
-******************************************************************************
+==============================================================================================
 Project:      Micropython
 Program:      Threading
 Programmer:   Mike C. Trethowan
 Date:         April 14, 2025
-Copyright     2025
+MIT License
+Copyright (c) 2025 Mike Trethowan
 
 Description:
     XIAO RP2040
     This is a simple program to demenstarate threading.
-    This snippet can run on the PICO by deleting ports for LEDR and LEDG
+    This snippet can run on the PICO by deleting pin assignments for LEDR and LEDG
 
-******************************************************************************
+==============================================================================================
 Pin Assignment:
 
                       -------- XIAO RP2040 --------
@@ -24,7 +25,7 @@ Pin Assignment:
             GP0    7-| UART0 TX           UART0 RX |- 8   GP1 
                       -----------------------------
                       
-******************************************************************************
+==============================================================================================
 '''
 from machine import Pin
 from utime import sleep
@@ -35,21 +36,23 @@ LEDR = Pin(17, Pin.OUT, Pin.PULL_UP, value=1)
 LEDG = Pin(16, Pin.OUT, Pin.PULL_UP, value=1)
 LEDB = Pin(25, Pin.OUT, Pin.PULL_UP, value=1)
 
-#*****************************************************************************
+#=============================================================================================
 
 def Core1():
     while True:
         print("This Is Core 1")
         LEDB.toggle()
         sleep(1)
-
+        
+# Main: ======================================================================================
 def main():
     _thread.start_new_thread(Core1, ()) # Start core 1 
     while True: # Loop on core 0
         print("This Is Core 0")
         sleep(4)
-
+        
+#==============================================================================================
 if __name__ == "__main__":
-    main()
-    
-#*****************************************************************************
+    main()    
+#==============================================================================================
+
