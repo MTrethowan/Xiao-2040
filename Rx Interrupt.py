@@ -1,5 +1,5 @@
 '''
-******************************************************************************
+==============================================================================================
 Project:      Micropython
 Program:      Threading
 Programmer:   Mike C. Trethowan
@@ -28,7 +28,7 @@ Note:
     Infinate loop warning: while not TxR.any(): can be employed, but one would need
     an escape or time out to exit the loop.
 
-******************************************************************************
+==============================================================================================
 Xiao RP2040 Pin Assignment:
 
                       -------- XIAO RP2040 --------
@@ -41,19 +41,19 @@ Xiao RP2040 Pin Assignment:
             GP0    7-| UART0 TX           UART0 RX |- 8   GP1 
                       -----------------------------
                       
-******************************************************************************
+==============================================================================================
 '''
 from machine import Pin, UART
 from utime import sleep, sleep_us
 
-#***********************************************************************
+#=============================================================================================
 
 LEDR = Pin(17, Pin.OUT, Pin.PULL_UP, value=1)
 LEDG = Pin(16, Pin.OUT, Pin.PULL_UP, value=1)
 LEDB = Pin(25, Pin.OUT, Pin.PULL_UP, value=1)
 TxR = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1))
- 
-# UART Interupt Request Handling ***************************************
+
+# UART Interupt Request Handling =============================================================
 def RxCallback(x): # X is unused but needed or TypeError: function takes 0 positional arguments but 1 were given
     if TxR.any(): # As this is a callback, this is not actually needed, but is here for demonstration.
         dat = str(TxR.readline()).split(",")
@@ -69,8 +69,7 @@ def RxCallback(x): # X is unused but needed or TypeError: function takes 0 posit
             
 TxR.irq(handler = RxCallback, trigger = TxR.IRQ_RXIDLE) 
 
-#***********************************************************************
-
+#=============================================================================================
 def CFG(): # Turn off automatic NMEA sentenses.
     print("Configuring 5M, Please Wait")
     TxR.write("$PUBX,40,GGA,0,0,0,0,0,0*5A\n")
@@ -94,7 +93,7 @@ def GetTimeDate(): # Poll Date Time
 def GetSats(): # Poll satalites in view 
     TxR.write("$PUBX,03,0,0,0,0,0,0*30\n")
  
-#***********************************************************************
+#=============================================================================================
 print("Hello World")
 CFG()
 while True:
@@ -105,7 +104,4 @@ while True:
     LEDG.toggle()
     sleep(6)
 
- #***********************************************************************   
-
-
-
+ #=============================================================================================
