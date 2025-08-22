@@ -1,11 +1,11 @@
 '''
 ==============================================================================================
-Project:      Micropython
-Program:      Threading
-Programmer:   Mike C. Trethowan
-Date:         April 14, 2025
-MIT License
-Copyright (c) 2025 Mike Trethowan
+ Project:      Micropython
+ Program:      Threading
+ Programmer:   Mike C. Trethowan
+ Date:         April 14, 2025
+ MIT License
+ Copyright (c) 2025 Mike Trethowan
 
 Description:
     XIAO RP2040
@@ -55,4 +55,5 @@ def main():
 if __name__ == "__main__":
     main()    
 #==============================================================================================
+
 
