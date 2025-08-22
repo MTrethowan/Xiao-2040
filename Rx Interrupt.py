@@ -48,11 +48,12 @@ from machine import Pin, UART
 from utime import sleep, sleep_us
 
 #=============================================================================================
-
-LEDR = Pin(17, Pin.OUT, Pin.PULL_UP, value=1)
-LEDG = Pin(16, Pin.OUT, Pin.PULL_UP, value=1)
-LEDB = Pin(25, Pin.OUT, Pin.PULL_UP, value=1)
 TxR = UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1))
+
+# Xiao has onboard RGB Leds.
+LEDR = Pin(17, Pin.OUT, Pin.PULL_UP, value=1) # Turns off red LED
+LEDG = Pin(16, Pin.OUT, Pin.PULL_UP, value=1) # Turns off green LED
+LEDB = Pin(25, Pin.OUT, Pin.PULL_UP, value=1) # Turns off blue LED
 
 # UART Interupt Request Handling =============================================================
 def RxCallback(x): # X is unused but needed or TypeError: function takes 0 positional arguments but 1 were given
@@ -106,4 +107,5 @@ while True:
     sleep(6)
 
  #=============================================================================================
+
 
