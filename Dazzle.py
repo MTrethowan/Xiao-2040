@@ -27,41 +27,42 @@ Pin Assignments:
 ==============================================================================================
 '''
 from machine import Pin
-from utime import sleep
-
+from utime import sleep, sleep_ms, sleep_us
 #==============================================================================================
 LEDR = Pin(17, Pin.OUT, Pin.PULL_UP, value=1)
 LEDG = Pin(16, Pin.OUT, Pin.PULL_UP, value=1)
 LEDB = Pin(25, Pin.OUT, Pin.PULL_UP, value=1)
-
 #==============================================================================================
 def Dazzle1():
-    LEDG.low()
-    sleep(0.5)
-    LEDG.high()
-    LEDR.low()
-    sleep(0.5)
-    LEDR.high()
-    LEDB.low()
-    sleep(0.5)
-    LEDB.high()
-
+    for i in range(4):
+        LEDG.low()
+        sleep(0.5)
+        LEDG.high()
+        sleep(0.5)
+    for i in range(4):
+        LEDR.low()
+        sleep(0.5)
+        LEDR.high()
+        sleep(0.5)
+    for i in range(4):
+        LEDB.low()
+        sleep(0.5)
+        LEDB.high()
+        sleep(0.5)
+        
 def Dazzle2():
-    LEDG.toggle()
-    sleep(0.5)
-    LEDG.toggle()
-    LEDR.toggle()
-    sleep(0.5)
-    LEDR.toggle()
-    LEDB.toggle()
-    sleep(0.5)
-    LEDB.toggle()
+    for i in range(4):
+        LEDG.toggle()
+    for i in range(4):
+        sleep(0.5)
+        LEDR.toggle()
+        sleep_ms(500)
+    for i in range(4):
+        LEDB.toggle()
+        sleep_us(5000)
 
 #==============================================================================================
 print("Hello World")
 while True:
     Dazzle2()
 #==============================================================================================
-    
-
-
