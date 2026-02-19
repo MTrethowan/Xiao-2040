@@ -77,10 +77,10 @@ def RxCallback(x): # X is unused but needed or TypeError: function takes 0 posit
         elif dat[1] == "04":
             t = dat[2]
             d = dat[3]
-            print("Time: " + t[0:2] + ":" + t[2:4] + ":" + t[4:6])
-            print("Date: " + d[0:2] + "/" + d[2:4] + "/"  + d[4:6])
+            print(f"Time: {t[0:2]}:{t[2:4]}:{t[4:6]}")
+            print(f"Date: {d[0:2]}/{d[2:4]}"/{d[4:6]}")
         else: # Expose NMEA code not shut-down with CFG()
-            print("Other Data: " + dat[0])
+            print(f"Other Data: {dat[0]}")
             
 TxR.irq(handler = RxCallback, trigger = TxR.IRQ_RXIDLE) 
 
@@ -120,6 +120,7 @@ while True:
     sleep(6)
 
  #=============================================================================================
+
 
 
 
